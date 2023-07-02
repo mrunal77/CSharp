@@ -33,6 +33,7 @@ public class BooksController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Post(Book newBook)
     {
+        newBook.Id = null;
         await _booksService.CreateAsync(newBook);
 
         return CreatedAtAction(nameof(Get), new { id = newBook.Id }, newBook);
